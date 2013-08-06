@@ -1,0 +1,9 @@
+*~
+/.org-id-locations
+abbrev_defs
+session.*
+elisp/ggtags
+/elpa
+/eshell
+org-clock-save.el
+/url
