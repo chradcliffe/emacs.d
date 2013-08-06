@@ -7,6 +7,7 @@
       ido-use-virtual-buffers t
       ido-file-extension-order '(".cpp" ".h" ".py" ".yang"))
 
+;; http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
   (interactive)

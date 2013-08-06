@@ -20,7 +20,7 @@
 (require 'revbufs) ;; Revert buffers
 (require 'newcomment) ;; Comment wrapping in source code
 
-; Calc helper
+; Calc helper (http://www.emacswiki.org/emacs/AdvancedDeskCalculator)
 (defun calc-eval-region (arg beg end)
   "Calculate the region and display the result in the echo area.
 With prefix ARG non-nil, insert the result at the end of region."
