@@ -7,3 +7,4 @@ elisp/ggtags
 /eshell
 org-clock-save.el
 /url
+elisp/redmine-url.el
