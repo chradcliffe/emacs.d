@@ -13,7 +13,7 @@
   alist))
 
 (defun cradcliffe-load-theme ()
-  (color-theme-sanityinc-solarized-dark))
+  (color-theme-hober))
 
 ;; Enable theme
 ;; test for each frame or console

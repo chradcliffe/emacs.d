@@ -38,11 +38,16 @@ With prefix ARG non-nil, insert the result at the end of region."
                   (interactive)
                   (setq current-prefix-arg '(4))
                   (call-interactively 'calc-eval-region)))
-                  
+
+(require 'whitespace)
+(setq whitespace-line-column 120)
+(setq whitespace-style '(face lines-tail trailing tabs))
+
+(require 'setup-package)
+
 (require 'setup-ack)
 (require 'setup-cmode)
 (require 'setup-file-finding)
-(require 'setup-package)
 (require 'setup-perl)
 (require 'setup-protobuf)
 (require 'setup-python)
@@ -53,6 +58,11 @@ With prefix ARG non-nil, insert the result at the end of region."
 (require 'setup-yang)
 (require 'setup-yaml)
 (require 'setup-org-mode)
+(require 'setup-twiki)
+
+(require 'edit-server)
+(edit-server-start)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -60,5 +70,17 @@ With prefix ARG non-nil, insert the result at the end of region."
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
  '(custom-safe-themes (quote ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
+ '(gdb-many-windows t)
+ '(gdb-non-stop-setting nil)
  '(org-agenda-files (quote ("~/org/agenda.org")))
+ '(org-export-backends (quote (ascii html icalendar latex odt)))
+ '(safe-local-variable-values (quote ((ffip-regexp . ".*\\.\\(cpp\\|py\\|h\\)$") (setl ffip-regexp ".*\\.\\(cpp\\|py\\|h\\)$") (eval setq default-directory (locate-dominating-file buffer-file-name ".dir-locals.el")))))
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background "nil"))))
+ '(whitespace-line ((t (:background "magenta" :foreground "yellow"))))
+ '(whitespace-space ((t (:background "red" :foreground "black")))))

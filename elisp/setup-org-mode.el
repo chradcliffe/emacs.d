@@ -6,14 +6,16 @@
           (lambda ()
             (local-set-key "\C-cd" 'org-time-stamp)
             (local-set-key "\C-cr" 'cradcliffe-insert-redmine)
-            (visual-line-mode t)))
+            (visual-line-mode t)
+            (flyspell-mode t)))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
    (plantuml . t)
    (perl . t)
-   (sh . t)))
+   (sh . t)
+   (ditaa . t)))
 
 (setq org-plantuml-jar-path "~/plantuml.jar")
 
@@ -25,9 +27,28 @@
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
 ;; Contains site-specific url function redmine-url
-(load "~/.emacs.d/elisp/redmine-url.el")
+(require 'private-config)
 
 (setq org-link-abbrev-alist
       '(("redmine" . redmine-url)))
+
+(require 'org-notify)
+(org-notify-start)
+
+(require 'pushover)
+
+(defun cradcliffe-org-pushover (plist)
+  (message "Sending notification!")
+  (pushover-notify "Org Notification" 
+                   (format "TODO: \"%s\" at %s!"
+                           (plist-get plist :heading)
+                           (plist-get plist :timestamp))))
+(org-notify-add 'default
+                '(:time "1h" :actions cradcliffe-org-pushover :period "8h" :duration 90))
+
+(setq org-latex-to-mathml-convert-command
+      "java -jar %j -unicode -force -df %o %I"
+      org-latex-to-mathml-jar-file
+      "/home/MATTER/cradcliffe/local/bin/mathtoweb.jar")
 
 (provide 'setup-org-mode)
