@@ -9,6 +9,11 @@
             (visual-line-mode t)
             (flyspell-mode t)))
 
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
@@ -50,5 +55,8 @@
       "java -jar %j -unicode -force -df %o %I"
       org-latex-to-mathml-jar-file
       "/home/MATTER/cradcliffe/local/bin/mathtoweb.jar")
+
+(require 'org-annotate-file)
+(require 'outorg)
 
 (provide 'setup-org-mode)

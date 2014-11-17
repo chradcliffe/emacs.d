@@ -29,6 +29,7 @@
             (ibuffer-vc-set-filter-groups-by-vc-root)))
 
 (require 'projectile)
+(setq projectile-enable-caching t)
 (projectile-global-mode)
 
 (defcustom git-grep-switches "--extended-regexp -I -n --ignore-case --no-color"

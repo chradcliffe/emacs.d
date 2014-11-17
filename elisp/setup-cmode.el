@@ -12,6 +12,8 @@
 (setq c-basic-style "company")
 (setq c-basic-offset 4)
 
+(require 'clang-format)
+
 (setq ff-other-file-alist
       '(("\\.c" (".h"))
         ("\\.cpp" (".h" ".hpp"))
@@ -56,9 +58,18 @@
 
 (require 'yasnippet)
 
-(when (require 'auto-complete-config nil 'noerror)
-    (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
-    (global-auto-complete-mode t))
+;; (when (require 'auto-complete-config nil 'noerror)
+;;     (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
+;;     (global-auto-complete-mode t))
+
+;; (defun cradcliffe/irony-mode-hook ()
+;;   (define-key irony-mode-map [remap completion-at-point]
+;;     'irony-mode-completion-at-point-async)
+;;   (define-key irony-mode-map [remap complete-symbol]
+;;     'irony-completion-at-point-async))
+
+;; (add-hook 'irony-mode-hook 'cradcliffe/irony-mode-hook)
+
 
 (defun cradcliffe/cmode-hook ()
   (setq indent-tabs-mode nil)
@@ -70,7 +81,6 @@
       '(("\\<\\(FIXME\\|TODO\\|DEFER\\|BUG\\|NOTE\\):" 1 font-lock-warning-face t)))
   (require 'ggtags)
   (ggtags-mode 1)
-  (show-paren-mode 1)
   (whitespace-mode t)
   (local-set-key (kbd "M-.") 'gtags-find-tag)
   (local-set-key (kbd "M-,") 'gtags-find-rtag)
